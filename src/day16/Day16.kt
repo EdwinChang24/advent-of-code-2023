@@ -84,7 +84,6 @@ fun part2() {
         (input.lastIndex to input.first().lastIndex) to (-1 to 0),
         (input.lastIndex to input.first().lastIndex) to (0 to -1)
     ) + (1..<input.lastIndex).map { (it to 0) to (0 to 1) } + (1..<input.lastIndex).map { (it to input.first().lastIndex) to (0 to -1) } + (1..<input.first().lastIndex).map { (0 to it) to (1 to 0) } + (1..<input.first().lastIndex).map { (input.lastIndex to it) to (-1 to 0) }).maxOf { p ->
-        println(p)
         input.rec(Triple(p.first, p.second, emptySet())).map { it.first }
             .filter { it.first in input.indices && it.second in input.first().indices }.toSet().size
     })
